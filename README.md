@@ -1,24 +1,21 @@
-<!-- version: 1.0.0 | build: 2026-09-18 | update: 2026-09-18 -->
+<!-- version: 1.1.0 | build: 2026-09-20 | update: 2026-09-20 -->
 # msr-cli
 
-The reference command-line tool for [MSR JSON](https://github.com/msr-standard/specification),
+The reference command-line tool for [MSR JSON](https://github.com/msrjson/specification),
 providing the `msr` command.
 
-> **Status: not yet released.** This repository holds the structure and the
-> rules the implementation will follow. Nothing is published yet, and there is
-> no binary, package or install script. To validate a manifest today, see
-> [AGENTS.md in the specification](https://github.com/msr-standard/specification/blob/main/AGENTS.md#validate).
+> **Status: implementation in progress.** Nothing is published on PyPI yet.
 
 ## Role in the MSR JSON project
 
 ```
-msr-standard/specification   source of truth: schemas, examples, RFCs
+msrjson/specification        source of truth: schemas, examples, RFCs
         ▲
         │  bundles the schema of a pinned release tag
-msr-standard/msr-validator   the validation library
+msrjson/msr-validator        the validation library
         ▲
         │  depends on
-msr-standard/msr-cli         this repository: the `msr` command
+msrjson/msr-cli              this repository: the `msr` command
 ```
 
 Dependencies point one way only. Validation logic lives in `msr-validator`; this
@@ -27,7 +24,7 @@ that imports the library always agree on what is valid.
 
 ## Planned commands
 
-The command surface is specified at <https://msr-standard.org/cli/>:
+The command surface is specified at <https://msrjson.org/cli/>:
 
 | Command | Purpose |
 | --- | --- |
@@ -36,6 +33,13 @@ The command surface is specified at <https://msr-standard.org/cli/>:
 | `msr lint` | Style and completeness checks beyond schema validity |
 | `msr convert` | Migrate legacy formats such as PAD XML |
 | `msr sign` | Detached signatures over a manifest |
+
+The initial release implements only `msr validate`; the remaining commands are
+not advertised as available until their behavior and tests exist.
+
+```bash
+msr validate .well-known/msr.json
+```
 
 `sign` is the reason this is a separate package: it needs cryptographic
 dependencies, and a registry importing only the validator should not inherit
@@ -51,7 +55,7 @@ them.
 ## Author
 
 MSR JSON was created by Antonio Santos. See the
-[specification's AUTHORS](https://github.com/msr-standard/specification/blob/main/AUTHORS).
+[specification's AUTHORS](https://github.com/msrjson/specification/blob/main/AUTHORS).
 
 ## License
 

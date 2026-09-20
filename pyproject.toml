@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "msr-cli"
+version = "0.1.0"
+description = "Reference command-line tool for MSR JSON"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "MSR JSON Working Group"}]
+dependencies = ["msr-validator>=0.1.0,<0.2.0"]
+
+[project.scripts]
+msr = "msr_cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
