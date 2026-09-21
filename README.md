@@ -60,3 +60,12 @@ MSR JSON was created by Antonio Santos. See the
 ## License
 
 [MIT](LICENSE).
+
+## Experimental MSR JSON 2.1 validation
+
+Until 2.1 is ratified and pinned, pass the local draft schema explicitly.
+The default remains the bundled MSR JSON 2.0 schema.
+
+```bash
+msr validate .well-known/msr.json --schema path/to/msr-2.1-draft.json
+```
